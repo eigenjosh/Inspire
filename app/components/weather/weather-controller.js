@@ -7,8 +7,12 @@ function WeatherController(){
 		console.log('Instantiating weather-service.js...')
 		console.log('Done.',weather);
 		function draw(){
-			var template = ''
-			var 
+			var elem = document.getElementById('weather')
+			elem.innerHTML = `<img src="${weather.weather[0].icon}">
+			
+			</img>
+			`
+
 		}
 	})
 

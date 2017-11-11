@@ -18,7 +18,14 @@ function TodoController() {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
 		var template = ''
+		var elem = document.getElementById('todo')
 		//DONT FORGET TO LOOP
+		for(i=0;i<todoList.length;i++){
+			template +=`
+			<p>${todoList.todo}</p>
+			`
+		}
+		elem.innerHTML = template
 	}
 
 	this.addTodoFromForm = function (e) {
@@ -49,5 +56,6 @@ function TodoController() {
 	}
 
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
+	todoService.getTodos()
 
 }

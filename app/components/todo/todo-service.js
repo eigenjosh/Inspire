@@ -1,51 +1,61 @@
 function TodoService() {
-	// A local copy of your todos
 	var todoList = []
 	var baseUrl = 'https://inspire-server.herokuapp.com/api/todos/josheigen'
 
 	function logError(err) {
 		console.error('UMM SOMETHING BROKE: ', err)
-		//CAN YOU NOTIFY THE USER IF SOMETHING BREAKS? 
-		//do this without breaking the controller/service responsibilities
 	}
 
-	this.getTodos = function (draw) {
+	var id = 0;
+
+	function Todo(config) {
+		this.title = config.title.value
+		this.description = config.description.value
+		this.id = id++
+		this.completed = false
+	}
+
+	this.getTodos = function getTodos(draw) {
+		if (!draw || typeof draw != 'function') { return console.error("Hey bro, aren't you supposed to give me, like, a callback or something?") }
 		$.get(baseUrl)
-			.then(function (res) { // <-- WHY IS THIS IMPORTANT????
-				
+			.then(res => {
+				todos = res
+				draw(todos)
 			})
 			.fail(logError)
 	}
 
-	this.addTodo = function (todo) {
-		// WHAT IS THIS FOR???
-		$.post(baseUrl, todo)
-			.then(function(res){ // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
+	this.getTodo = function getTodo(id) {
+		for (var i = 0; i < todos.length; i++) {
+			var todo = todos[i];
+			if (id === todo.id) {
+				return todo
+			}
+		}
+	}
 
-				console.log('To-Do successfully added!')
-				todoList.push(todo)
-				for()
-				todoList.lastIndexOf["id"] = todoList.
-				console.log(todoId)
-				return res
-			}) 
+
+	this.addTodo = function (form, getTodos) {
+		if (!form || !getTodos || typeof getTodos != 'function') { return console.error('Unable to add new task', 'bad parameters', form, getTodos) }
+		var newTodo = new Todo(form)
+		$.post(baseUrl, newTodo)
+			.then(getTodos)
 			.fail(logError)
 	}
 
 	this.toggleTodoStatus = function (todoId) {
-		// MAKE SURE WE THINK THIS ONE THROUGH
-		//STEP 1: Find the todo by its index **HINT** todoList
-		for(i=0;i<todoList.length;i++){
+
+		for (i = 0; i < todoList.length; i++) {
 			todoId = todoList[i].id
 			return todoId
 		}
-		//STEP 2: Change the completed flag to the opposite of what is is **HINT** todo.completed = !todo.completed
-		if(todo.completed){
+
+		if (todo.completed) {
 			todo.completed = false
 		} else {
 			todo.completed = true
 		}
-		//STEP 3: Here is that weird Ajax request because $.put doesn't exist
+
 		$.ajax({
 			method: 'PUT',
 			contentType: 'application/json',
@@ -53,14 +63,19 @@ function TodoService() {
 			data: JSON.stringify(todoId)
 		})
 			.then(function (res) {
-				//DO YOU WANT TO DO ANYTHING WITH THIS?
+
 			})
 			.fail(logError)
 	}
 
-	this.removeTodo = function () {
-		// Umm this one is on you to write.... It's also unique, like the ajax call above. The method is a DELETE
-		
+	this.removeTodo = function removeTodo(index, getTodos) {
+
+		$.ajax({
+			url: baseUrl + '/' + index,
+			method: 'DELETE'
+		})
+			.then(getTodos)
+			.fail(logError)
 	}
 
 }

@@ -2,6 +2,8 @@
 
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Inspire</title>
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -15,17 +17,20 @@
 		The Quote
 	</div>
 
-	<footer>
-		<div id="todo">
-			<form action="onsubmit" method="post">
-				<label for="POST-name">To-Do:</label>
-				<input type="text" name="name" id="POST-name">
-				<input type="submit" value="Create Task">
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3 hidden" id="add-todo-form">
+			<form class="form" onsubmit="app.controllers.todoController.addTodo(event)">
+				<div class="form-group">
+					<label for="title">Title:</label>
+					<input type="text" name="title" class="form-control" placeholder="Title" required>
+				</div>
+				<div class="form-group">
+					<label for="description">Description:</label>
+					<input type="text" name="description" class="form-control" placeholder="Description">
+				</div>
 			</form>
 		</div>
-	</footer>
-
-
+	</div>
 
 	<!--JS Libraries-->
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>

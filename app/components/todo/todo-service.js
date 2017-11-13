@@ -21,8 +21,12 @@ function TodoService() {
 		// WHAT IS THIS FOR???
 		$.post(baseUrl, todo)
 			.then(function(res){ // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
+
 				console.log('To-Do successfully added!')
 				todoList.push(todo)
+				for()
+				todoList.lastIndexOf["id"] = todoList.
+				console.log(todoId)
 				return res
 			}) 
 			.fail(logError)

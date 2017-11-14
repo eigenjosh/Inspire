@@ -1,9 +1,9 @@
 function TodoService() {
-	var todoList = []
+	var todos = []
 	var baseUrl = 'https://inspire-server.herokuapp.com/api/todos/josheigen'
 
 	function logError(err) {
-		console.error('UMM SOMETHING BROKE: ', err)
+		console.error(err)
 	}
 
 	var id = 0;
@@ -34,7 +34,6 @@ function TodoService() {
 		}
 	}
 
-
 	this.addTodo = function (form, getTodos) {
 		if (!form || !getTodos || typeof getTodos != 'function') { return console.error('Unable to add new task', 'bad parameters', form, getTodos) }
 		var newTodo = new Todo(form)
@@ -45,8 +44,8 @@ function TodoService() {
 
 	this.toggleTodoStatus = function (todoId) {
 
-		for (i = 0; i < todoList.length; i++) {
-			todoId = todoList[i].id
+		for (i = 0; i < todos.length; i++) {
+			todoId = todos[i].id
 			return todoId
 		}
 

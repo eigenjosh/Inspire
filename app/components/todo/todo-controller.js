@@ -13,16 +13,16 @@ function TodoController() {
 		todoService.getTodos(draw)
 	}
 
-	function draw(todoList) {
-
+	function draw(todos) {
 		var template = ''
-		for (i = 0; i < todoList.length; i++) {
-			var todo = todoList[i];
+		for (i = 0; i < todos.length; i++) {
+			var todo = todos[i];
+			console.log(todo)
 			template += `
 			<div class="col-md-3">
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<i class="glyphicon glyphicon-trash pull-right" onclick="app.controllers.todoController.removeTodo(${i})"></i>
+					<i class="glyphicon glyphicon-trash pull-right" onclick="app.controllers.todoController.removeTodo(${i}, getTodos)"></i>
 					<h2>To-Do:</h2>
 				</div>
 				<div class="panel-body text-center">

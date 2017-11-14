@@ -9,51 +9,54 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
-<body id="body" class="img-responsive">
-	<div id="weather">
-		Your Weather Template
-	</div>
+<body>
+	<div class="bigCover">
 
-
-	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3 hidden" id="add-todo-form">
-			<form class="form" onsubmit="app.controllers.todoController.addTodoFromForm(event)">
-				<div class="form-group">
-					<label for="title">Title:</label>
-					<input type="text" name="title" class="form-control" placeholder="Title" required>
-				</div>
-				<div class="form-group">
-					<label for="description">Description:</label>
-					<input type="text" name="description" class="form-control" placeholder="Description">
-				</div>
-				<button type="submit">Submit</button>
-			</form>
+		<div id="weather">
+			Your Weather Template
 		</div>
-	</div>
 
-	<button type="button" name="Add New Task" onclick="app.controllers.todoController.showAddTodoForm()" id="show-button" class="btn btn-info">Add Task</button>
 
-	<div id="quote">
-		<!-- <blockquote class="blockquote-reverse">
-			<p>${quote.quote}</p>
-			<footer>
-				<cite title="Source Title">${quote.source}</cite>
-			</footer>
-		</blockquote> -->
-	</div>
-
-	<div class = 'row' id="todo-list">
-		<!-- <div class="col-md-3">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<i class="glyphicon glyphicon-trash pull-right" onclick="app.controllers.todoController.removeTodo(${i})"></i>
-					<h2>To-Do:</h2>
-				</div>
-				<div class="panel-body text-center">
-					<h4>${todo.title}</h4>
-				</div>
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3 hidden" id="add-todo-form">
+				<form class="form" onsubmit="app.controllers.todoController.addTodoFromForm(event)">
+					<div class="form-group">
+						<label for="title">Title:</label>
+						<input type="text" name="title" class="form-control" placeholder="Title" required>
+					</div>
+					<div class="form-group">
+						<label for="description">Description:</label>
+						<input type="text" name="description" class="form-control" placeholder="Description">
+					</div>
+					<button type="submit">Submit</button>
+				</form>
 			</div>
-		</div> -->
+		</div>
+
+		<button type="button" name="Add New Task" onclick="app.controllers.todoController.showAddTodoForm()" id="show-button" class="btn btn-info">Add Task</button>
+
+		<div id="quote">
+			<!-- <blockquote class="blockquote-reverse">
+				<p>${quote.quote}</p>
+				<footer>
+					<cite title="Source Title">${quote.source}</cite>
+				</footer>
+			</blockquote> -->
+		</div>
+
+		<div class='row' id="todo-list">
+			<!-- <div class="col-md-3">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<i class="glyphicon glyphicon-trash pull-right" onclick="app.controllers.todoController.removeTodo(${i})"></i>
+						<h2>To-Do:</h2>
+					</div>
+					<div class="panel-body text-center">
+						<h4>${todo.title}</h4>
+					</div>
+				</div>
+			</div> -->
+		</div>
 	</div>
 
 	<!--JS Libraries-->

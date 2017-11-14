@@ -8,7 +8,7 @@ function QuoteController(){
 		<blockquote class="blockquote-reverse">
 			<p>${quote.quote}</p>
 			<footer>
-				<cite title="Source Title">${quote.source}</cite>
+				<cite title="Source Title">${quote.author}</cite>
 			</footer>
 		</blockquote>`
 	})

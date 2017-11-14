@@ -1,5 +1,14 @@
-blockquote {
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+bigCover{
+    background-size: cover;
+    width: 100%;
+    height: 40%;
+    resize: both;
+    overflow: auto
+}
+.blockquote-reverse, blockquote.pull-right {
+    padding-right: 15px;
+    padding-left: 0;
+    text-align: right;
+    border-right: 5px solid #eee;
+    border-left: 0;
 }

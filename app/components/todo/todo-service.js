@@ -61,9 +61,7 @@ function TodoService() {
 			url: baseUrl + '/' + todoId,
 			data: JSON.stringify(todoId)
 		})
-			.then(function (res) {
-
-			})
+			.then(res=>{})
 			.fail(logError)
 	}
 

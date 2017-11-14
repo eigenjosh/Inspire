@@ -3,15 +3,14 @@ function ImageService() {
 	var url2 = 'http://www.splashbase.co/api/v1/images/random';
 	var apiUrl = url + encodeURIComponent(url2)
 
+	function logError(err) {
+		console.error(err)
+	}
+
 	this.getImage = function (callWhenDone) {
-		// ^^^^^^^ How do you call this function?
 		return $.get(apiUrl, function (res) {
 			res = JSON.parse(res)
 			callWhenDone(res)
-			if(!res.large_url){
-				console.log('No high-resolution photo available. Fetching new url...')
-				ImageService()
-			} 
 		})
 	}
 }

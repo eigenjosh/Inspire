@@ -9,7 +9,6 @@ function TodoController() {
 
 
 	function getTodos() {
-
 		todoService.getTodos(draw)
 	}
 

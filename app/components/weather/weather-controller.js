@@ -1,17 +1,3 @@
-// function WeatherController() {
-// 	var wc = this;
-// 	var weatherService = new WeatherService();
-
-// 	weatherService.getWeather(function (weather) {
-// 		var template = ''
-// 		var elem = document.getElementById('icon'),
-// 		debugger
-// 		document. = `<img src="${weather.weather["0"].icon}" alt="">`
-// 		console.log(weather.weather["0"].icon);
-// 	})
-
-// }
-
 function WeatherController() {
 	var weatherService = new WeatherService();
 	var fahrenheit = '°F'

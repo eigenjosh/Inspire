@@ -4,14 +4,22 @@ function TodoController() {
 	var todosElem = document.getElementById('todo-list')
 	var todosFormElem = document.getElementById('add-todo-form')
 	var showButton = document.getElementById('show-button')
+	var todosCount = document.getElementById('count')
 
 
 
 
+	function getTodos() {
+		todoService.getTodos(drawTodos)
+	}
 
 
-	function draw(todos) {
+	function drawTodos(todos) {
 		var template = ''
+		template += `
+		<p>${todos.length}</p>
+		`
+		todosCount.innerHTML = template
 		for (i = 0; i < todos.length; i++) {
 			var todo = todos[i];
 			console.log(todo)
@@ -19,12 +27,10 @@ function TodoController() {
 			<div class="col-md-3">
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<p>${todoService.todos.length}</p>
 					<i class="glyphicon glyphicon-trash pull-right" onclick="app.controllers.todoController.removeTodo(${i})"></i>
-					<h2>To-Do:</h2>
+					<h4>${todo.name}</h4>
 				</div>
 				<div class="panel-body text-center">
-					<h4>${todo.title}</h4>
 				</div>
 			</div>
 		</div>
@@ -35,10 +41,8 @@ function TodoController() {
 
 	this.addTodoFromForm = function addTodoFromForm(event) {
 		event.preventDefault()
-		var form = event.target
-		var getTodos = todoService.getTodos()
-		debugger
-		todoService.addTodo(form, getTodos)
+		var name = event.target.name.value
+		todoService.addTodo(name, getTodos)
 		todosFormElem.classList.toggle('hidden', true)
 	}
 	var formstate = false
@@ -60,7 +64,7 @@ function TodoController() {
 	var completed = false
 
 	this.toggleTodoStatus = function toggleTodoStatus(index) {
-		if(completed){
+		if (completed) {
 			showButton.innerText = 'Mark as Complete'
 			showButton.className = 'btn btn-info'
 			todosFormElem.classList.add('hidden')
@@ -80,5 +84,5 @@ function TodoController() {
 
 	}
 
-
+	getTodos()
 }

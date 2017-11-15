@@ -6,39 +6,31 @@ function TodoService() {
 		console.error(err)
 	}
 
-	var id = 0;
+	var id = 0
 
-	function Todo(config) {
-		this.title = config.title.value
-		this.description = config.description.value
-		this.id = id++
-		this.completed = false
-	}
 
-	this.getTodos = function getTodos(draw) {
-		var addTodo = addTodo()
-		if (!draw || typeof draw != 'function') { return console.error("Hey bro, aren't you supposed to give me, like, a callback or something?") }
+	this.getTodos = function getTodos(cb) {
+		if (!cb || typeof cb != 'function') { return console.error('WOah I need a cb to run') }
+		// first task is to request the data from the server ASYNC
+		// the data from the server
+		// give the controller what it wants
 		$.get(baseUrl)
 			.then(res => {
+				// second task is to update the local todos array with 
 				todos = res
-				draw(todos)
+				cb(todos)
 			})
-			.fail(addTodo)
+			.fail()
 	}
 
-	this.getTodo = function getTodo(id) {
-		for (var i = 0; i < todos.length; i++) {
-			var todo = todos[i];
-			if (id === todo.id) {
-				return todo
-			}
+
+	this.addTodo = function (name, getTodos) {
+		if (!name || !getTodos || typeof getTodos != 'function') { return console.error('Unable to add new task', 'bad parameters', name, getTodos) }
+		var todo = {
+			name: name,
+			completed: false
 		}
-	}
-
-	this.addTodo = function (form, getTodos) {
-		if (!form || !getTodos || typeof getTodos != 'function') { return console.error('Unable to add new task', 'bad parameters', form, getTodos) }
-		var newTodo = new Todo(form)
-		$.post(baseUrl, newTodo)
+		$.post(baseUrl, todo)
 			.then(getTodos)
 			.fail(logError)
 	}
@@ -62,7 +54,7 @@ function TodoService() {
 			url: baseUrl + '/' + todoId,
 			data: JSON.stringify(todoId)
 		})
-			.then(res=>{})
+			.then(res => { })
 			.fail(logError)
 	}
 

@@ -9,8 +9,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
-<body>
-	<div class="bigCover">
+<body class="bigCover">
+	<div>
 
 		<div id="weather">
 			Weather
@@ -21,12 +21,8 @@
 			<div class="col-sm-6 col-sm-offset-3 hidden" id="add-todo-form">
 				<form class="form" onsubmit="app.controllers.todoController.addTodoFromForm(event)">
 					<div class="form-group">
-						<label for="title">Title:</label>
-						<input type="text" name="title" class="form-control" placeholder="Title" required>
-					</div>
-					<div class="form-group">
-						<label for="description">Description:</label>
-						<input type="text" name="description" class="form-control" placeholder="Description">
+						<label for="name">Title:</label>
+						<input type="text" name="name" class="form-control" placeholder="Title" required>
 					</div>
 					<button type="submit">Submit</button>
 				</form>
@@ -43,7 +39,7 @@
 				</footer>
 			</blockquote> -->
 		</div>
-
+		<div id="count" class = "num"></div>
 		<div class='row' id="todo-list">
 			<!-- <div class="col-md-3">
 				<div class="panel panel-info">

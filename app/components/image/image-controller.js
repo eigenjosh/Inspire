@@ -7,7 +7,8 @@ function ImageController() {
 		if (largeUrl == null) {
 
 		} else {
-			document.body.style.backgroundImage = `url(${image.large_url})`
+			document.body.style.backgroundImage = `url(${image.large_url})
+			`
 			
 		}
 	})

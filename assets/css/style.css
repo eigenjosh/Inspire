@@ -1,9 +1,6 @@
 bigCover{
     background-size: cover;
-    width: 100%;
-    height: 40%;
-    resize: both;
-    overflow: auto
+    object-position: center, center;
 }
 .blockquote-reverse, blockquote.pull-right {
     padding-right: 15px;

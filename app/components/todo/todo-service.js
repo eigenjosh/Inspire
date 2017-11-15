@@ -1,5 +1,5 @@
 function TodoService() {
-	var todos = []
+	this.todos = []
 	var baseUrl = 'https://inspire-server.herokuapp.com/api/todos/josheigen'
 
 	function logError(err) {
@@ -16,13 +16,14 @@ function TodoService() {
 	}
 
 	this.getTodos = function getTodos(draw) {
+		var addTodo = addTodo()
 		if (!draw || typeof draw != 'function') { return console.error("Hey bro, aren't you supposed to give me, like, a callback or something?") }
 		$.get(baseUrl)
 			.then(res => {
 				todos = res
 				draw(todos)
 			})
-			.fail(logError)
+			.fail(addTodo)
 	}
 
 	this.getTodo = function getTodo(id) {

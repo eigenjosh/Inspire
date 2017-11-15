@@ -8,9 +8,7 @@ function TodoController() {
 
 
 
-	function getTodos() {
-		todoService.getTodos(draw)
-	}
+
 
 	function draw(todos) {
 		var template = ''
@@ -21,7 +19,8 @@ function TodoController() {
 			<div class="col-md-3">
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<i class="glyphicon glyphicon-trash pull-right" onclick="app.controllers.todoController.removeTodo(${i}, getTodos)"></i>
+					<p>${todoService.todos.length}</p>
+					<i class="glyphicon glyphicon-trash pull-right" onclick="app.controllers.todoController.removeTodo(${i})"></i>
 					<h2>To-Do:</h2>
 				</div>
 				<div class="panel-body text-center">
@@ -74,10 +73,10 @@ function TodoController() {
 	}
 
 	this.removeTodo = function removeTodo(index) {
-		todoService.removeTodo(index, getTodos)
+		todoService.removeTodo(index)
+		getTodos()
 
 	}
 
-	getTodos()
 
 }

@@ -1,6 +1,6 @@
 function ImageController() {
 
-	var imageService = new ImageService(refresh);
+	var imageService = new ImageService();
 	
 	imageService.getImage(function (image) {
 		var largeUrl = image.large_url

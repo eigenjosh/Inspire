@@ -36,6 +36,8 @@ function TodoController() {
 	this.addTodoFromForm = function addTodoFromForm(event) {
 		event.preventDefault()
 		var form = event.target
+		var getTodos = todoService.getTodos()
+		debugger
 		todoService.addTodo(form, getTodos)
 		todosFormElem.classList.toggle('hidden', true)
 	}
